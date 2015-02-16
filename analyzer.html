@@ -1,0 +1,361 @@
+
+<style>
+body {
+background-color: black;
+color: white;
+}
+
+.progress {
+    margin-bottom:0px;
+}
+
+#heroes{
+    height:500px;
+    overflow-y:scroll;
+
+}
+
+.tooltip-inner {
+    background-color:#555555;
+    font-size: 16px;
+}
+
+.tooltip.right .tooltip-arrow{
+    border-right-color: #555555;
+}
+
+img.opacity {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+        -webkit-transition: opacity 0.3s linear;
+
+    }   
+    
+img.opacity:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+        -webkit-transition: opacity 0.3s linear;
+
+    }
+}
+
+</style>
+
+<div class="container">
+<h3 class="text-muted">Dota 2 Team Analyzer</h3>
+<p class="lead">Click a hero portrait to add or remove.</p>
+
+<div class="row">
+<div class="col-xs-5" id="heroescontainer">Sort By:
+    <select id="sortselect" class="form-control"><</select><div id="heroes"></div>
+</div>
+<div class="col-xs-1" >Selected:
+    <div id="selected"></div>
+</div>
+<div class="col-xs-6">Analysis:
+    <div id="stats"></div>
+</div>
+</div>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    //TODO searchbox?
+    //TODO sort by total
+    //TODO sort by best options
+    //TODO add farm priority
+    //TODO add melee/ranged
+
+var dataURL="heroes.csv";
+var PICTURE_HEIGHT=40;
+var attrColorMap={"Strength":"progress-bar-danger", "Agility":"progress-bar-success", "Intelligence":"progress-bar-info"};
+
+$.get( dataURL, function( data ) {
+	var dataArray=CSVToArray(data, ",");
+    var heroMap={};
+    var selected={};
+
+    //get list of stats and create bars
+    var i=1;
+    var stats=[];
+
+    //add name option to sorter
+    $("#sortselect").append($('<option></option>').html("Name"));
+        $("#sortselect").append($('<option></option>').html("Attribute"));
+
+
+    while(dataArray[0][i]!="Total"){
+        var stat=dataArray[0][i];
+        var statDiv=$("<div />");
+        statDiv.append(stat);
+        var progbar=$('<div class="progress"><div class="progress-bar"></div></div>');
+        statDiv.append(progbar);
+        statDiv.attr("id", stat);
+        $( "#stats" ).append(statDiv);
+        
+        stats.push(stat);
+        $("#sortselect").append($('<option></option>').val(stat).html(stat));
+        i++;
+    }
+
+    //get data for each hero
+    //loop through list of heroes, skipping the first line
+    for (var i=1;i<dataArray.length;i++){
+        //build the hero Object
+        var myObject={};
+        //loop through each attribute
+        for (var j=0;j<dataArray[0].length;j++){
+            if (isNumber(dataArray[i][j]))
+            {
+                dataArray[i][j]=parseInt(dataArray[i][j]);
+            }
+            myObject[dataArray[0][j]]=dataArray[i][j];
+        }
+        heroMap[myObject.Name]=myObject;
+    }
+    console.log(heroMap);
+    renderHeroList("Name");
+
+    //add event handler for sorter
+    $("#sortselect").on("change", function(){
+        renderHeroList($(this).val());
+    });
+
+  function renderHeroList(sortKey){
+    $("#heroes").empty();
+    var keys=Object.keys(heroMap);
+    var values=keys.map(function(v) { return heroMap[v]; });
+    var currAttr="";
+    sortByKey(values,sortKey);
+
+    for (var i=0;i<values.length;i++){
+        var heroDiv=generateHeroDiv(values[i], sortKey);
+        heroDiv.attr("id", values[i].Name);
+
+        //create progress bar for stat sorts
+        if (stats.indexOf(sortKey)>=0){
+            var progdiv=$('<div class="progress"><div class="progress-bar"></div></div>')
+            .height(PICTURE_HEIGHT);
+            var percent=10*values[i][sortKey];
+            var progbar=progdiv.children(".progress-bar")
+            .width(percent+"%")
+            .html(values[i][sortKey]);
+            updateProgColors(progbar, percent);
+            heroDiv.append(progdiv);
+    }
+    //create attribute dividers
+        if (sortKey=="Attribute"){
+            attr=values[i].Attribute;
+            if (currAttr!=attr)
+            {
+            var progdiv=$('<div class="progress" style="width:100%"><div class="progress-bar"></div></div>');
+            var progbar=progdiv.children(".progress-bar")
+            .width("100%")
+            .html(attr)
+            .addClass(attrColorMap[attr]);
+
+            $("#heroes").append(progdiv);
+            currAttr=attr;
+            }
+        }
+        $("#heroes").append(heroDiv);
+    }
+
+//mouseover code
+        $('#heroes .hero .heroimage').on("mouseover", function(){
+        var heroName=$(this).parent().attr("id");
+
+        if (!(heroName in selected) && Object.keys(selected).length<5){
+            selected["temp"]=heroMap[heroName];
+            recalculateBars();
+
+            $(this).on("mouseout", function(){
+            delete selected["temp"];
+            recalculateBars();
+            });
+        }
+    });
+
+    //add event handlers to heroes for click-add
+        $('#heroes .hero .heroimage').on("click", function(){
+        var heroName=$(this).parent().attr("id");
+        delete selected["temp"];
+
+        if (!(heroName in selected) && Object.keys(selected).length<5){
+            selected[heroName]=heroMap[heroName];
+            var heroDiv=generateHeroDiv(selected[heroName], "Name");
+            var heroImage=heroDiv.children(".heroimage");
+            heroImage.removeClass("opacity")
+            $('#selected').append(heroDiv);
+            recalculateBars();
+
+            //reactivate tooltips for new divs
+            $(".heroimage").tooltip();
+
+            //add handler to remove element on click
+            heroDiv.on("click", function(){
+            delete selected[heroName];
+            heroDiv.remove();
+            recalculateBars();
+            });
+        }
+    });
+    //reactivate tooltips
+        $(".heroimage").tooltip();
+}
+
+function recalculateBars(){
+            for(var i = 0 ;i<stats.length;i++){
+                var total=0;
+                for (var hero in selected){
+                    total+=selected[hero][stats[i]];
+                }
+                var percent=total/50*100;
+                var progbar=$("#"+stats[i]+" .progress-bar")
+                .width(percent+"%")
+                .html(total);
+                updateProgColors(progbar, percent);
+
+            }
+}
+
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key];
+        var y = b[key];
+
+        if (typeof x == "string")
+        {
+            x = x.toLowerCase(); 
+            y = y.toLowerCase();
+            //sort Names ascending
+            return ((x > y) ? 1 : ((x < y) ? -1 : 0));
+        }
+
+        //sorts in descending order
+        return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+    });
+}
+
+function generateHeroDiv(heroObject, key){
+    var newhero = $( "<div/>" );
+        newhero.addClass("hero");
+
+        var image = $("<img/>");
+        image.addClass("heroimage opacity");
+        image.attr("src", heroObject.Image);
+        image.attr("height", PICTURE_HEIGHT);
+        image.attr("data-toggle","tooltip");
+        image.attr("data-placement","right");
+        image.attr("title", heroObject.Name);
+        image.css("float", "left");
+
+        newhero.append(image);
+    return newhero;
+}
+
+function updateProgColors(progbar, percent){
+    progbar.removeClass();
+    if (percent>80){
+        progbar.addClass("progress-bar progress-bar-success")
+    }
+    else if (percent>50){
+        progbar.addClass("progress-bar progress-bar-info")
+    }
+    else if (percent>20){
+        progbar.addClass("progress-bar progress-bar-warning")
+    }
+    else{
+        progbar.addClass("progress-bar progress-bar-danger")
+    }
+}
+    // This will parse a delimited string into an array of
+    // arrays. The default delimiter is the comma, but this
+    // can be overriden in the second argument.
+    function CSVToArray( strData, strDelimiter ){
+        // Check to see if the delimiter is defined. If not,
+        // then default to comma.
+        strDelimiter = (strDelimiter || ",");
+
+        // Create a regular expression to parse the CSV values.
+        var objPattern = new RegExp(
+            (
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"
+            ),
+            "gi"
+            );
+
+
+        // Create an array to hold our data. Give the array
+        // a default empty first row.
+        var arrData = [[]];
+
+        // Create an array to hold our individual pattern
+        // matching groups.
+        var arrMatches = null;
+
+
+        // Keep looping over the regular expression matches
+        // until we can no longer find a match.
+        while (arrMatches = objPattern.exec( strData )){
+
+            // Get the delimiter that was found.
+            var strMatchedDelimiter = arrMatches[ 1 ];
+
+            // Check to see if the given delimiter has a length
+            // (is not the start of string) and if it matches
+            // field delimiter. If id does not, then we know
+            // that this delimiter is a row delimiter.
+            if (
+                strMatchedDelimiter.length &&
+                (strMatchedDelimiter != strDelimiter)
+                ){
+
+                // Since we have reached a new row of data,
+                // add an empty row to our data array.
+                arrData.push( [] );
+
+            }
+
+
+            // Now that we have our delimiter out of the way,
+            // let's check to see which kind of value we
+            // captured (quoted or unquoted).
+            if (arrMatches[ 2 ]){
+
+                // We found a quoted value. When we capture
+                // this value, unescape any double quotes.
+                var strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( "\"\"", "g" ),
+                    "\""
+                    );
+
+            } else {
+
+                // We found a non-quoted value.
+                var strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+
+            // Now that we have our value string, let's add
+            // it to the data array.
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+
+        // Return the parsed data.
+        return( arrData );
+    }
+});
+</script>
