@@ -1,0 +1,108 @@
+Name,Carry,Support,Initiation,EarlyBurst,LateBurst,Disable,Push,Survivability,Total,Attribute,Type,Image
+Nature's Prophet,5,3,2,1,3,2,10,4,30,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/furion_full.png
+Lycan,8,1,2,3,7,1,9,7,38,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/lycan_full.png
+Elder Titan,5,7,8,8,7,6,4,4,49,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/elder_titan_full.png
+Death Prophet,6,3,6,4,4,4,9,3,39,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/death_prophet_full.png
+Bristleback,6,1,6,1,4,2,2,6,28,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/bristleback_full.png
+Bloodseeker,5,2,4,6,3,3,2,3,28,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/bloodseeker_full.png
+Wraith King,6,6,5,3,5,5,4,7,41,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/skeleton_king_full.png
+Necrophos,6,3,5,3,5,3,4,5,34,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/necrolyte_full.png
+Sniper,7,1,4,4,8,2,7,1,34,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/sniper_full.png
+Pugna,6,5,2,6,6,2,8,4,39,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/pugna_full.png
+Clockwerk,4,6,8,3,2,6,3,5,37,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/rattletrap_full.png
+Lone Druid,10,1,1,1,6,4,9,4,36,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/lone_druid_full.png
+Terrorblade,5,5,5,5,5,5,5,5,40,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/terrorblade_full.png
+Enchantress,5,7,1,6,7,2,7,3,38,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/enchantress_full.png
+Mirana,5,5,9,7,3,4,3,5,41,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/mirana_full.png
+Witch Doctor,6,6,5,3,6,5,2,2,35,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/witch_doctor_full.png
+Lich,3,10,5,9,4,1,2,3,37,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/lich_full.png
+Axe,6,4,7,8,4,3,4,5,41,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/axe_full.png
+Rubick,4,8,6,4,5,9,3,3,42,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/rubick_full.png
+Phantom Lancer,9,2,3,5,7,2,8,5,41,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/phantom_lancer_full.png
+Visage,6,8,4,9,3,4,8,5,47,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/visage_full.png
+Luna,9,3,4,7,6,2,9,1,41,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/luna_full.png
+Earthshaker,4,8,8,7,7,9,3,4,50,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/earthshaker_full.png
+Outworld Devourer,9,3,5,2,9,4,1,3,36,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/obsidian_destroyer_full.png
+Phoenix,5,5,5,5,5,5,5,5,40,Strength,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/phoenix_full.png
+Vengeful Spirit,4,8,6,5,2,6,6,3,40,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/vengefulspirit_full.png
+Anti-Mage,9,1,2,3,8,2,6,9,40,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/antimage_full.png
+Sven,9,4,6,6,10,6,8,6,55,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/sven_full.png
+Drow Ranger,7,2,6,6,8,4,8,1,42,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/drow_ranger_full.png
+Keeper of the Light,2,9,4,7,4,3,8,3,40,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/keeper_of_the_light_full.png
+Venomancer,5,7,5,2,3,3,7,1,33,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/venomancer_full.png
+Beastmaster,5,5,6,5,3,7,5,4,40,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/beastmaster_full.png
+Crystal Maiden,1,9,3,8,4,7,2,2,36,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/crystal_maiden_full.png
+Alchemist,8,5,7,5,9,6,7,7,54,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/alchemist_full.png
+Kunkka,9,3,7,4,9,4,4,1,41,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/kunkka_full.png
+Legion Commander,5,5,5,5,5,5,5,5,40,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/legion_commander_full.png
+Timbersaw,6,3,8,9,6,2,3,7,44,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/shredder_full.png
+Invoker,7,3,8,6,9,10,9,3,55,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/invoker_full.png
+Viper,5,3,2,7,4,2,3,4,30,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/viper_full.png
+Storm Spirit,7,3,9,6,7,5,4,9,50,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/storm_spirit_full.png
+Ancient Apparition,2,7,5,1,5,4,1,1,26,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/ancient_apparition_full.png
+Dark Seer,6,3,9,5,8,2,5,6,44,Intelligence,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/dark_seer_full.png
+Gyrocopter,9,4,6,8,8,4,5,1,45,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/gyrocopter_full.png
+Medusa,10,3,7,2,6,4,6,7,45,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/medusa_full.png
+Riki,7,4,6,4,8,4,3,5,41,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/riki_full.png
+Tidehunter,4,6,8,4,4,5,3,5,39,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/tidehunter_full.png
+Zeus,5,4,5,10,6,2,3,1,36,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/zuus_full.png
+Ogre Magi,4,8,5,6,6,6,2,3,40,Intelligence,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/ogre_magi_full.png
+Meepo,8,2,7,6,6,5,7,3,44,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/meepo_full.png
+Slark,5,4,6,8,5,3,3,8,42,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/slark_full.png
+Chen,3,7,2,6,1,2,8,3,32,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/chen_full.png
+Io,2,7,8,6,2,1,1,4,31,Strength,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/wisp_full.png
+Centaur Warrunner,6,5,9,9,5,6,4,4,48,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/centaur_full.png
+Weaver,8,2,3,5,7,1,3,10,39,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/weaver_full.png
+Ursa,7,2,7,6,9,1,5,1,38,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/ursa_full.png
+Puck,4,4,8,7,5,6,4,9,47,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/puck_full.png
+Naga Siren,7,7,9,4,5,9,7,10,58,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/naga_siren_full.png
+Earth Spirit,5,5,5,5,5,5,5,5,40,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/earth_spirit_full.png
+Broodmother,7,3,1,7,5,1,8,8,40,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/broodmother_full.png
+Enigma,2,6,8,2,1,8,6,1,34,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/enigma_full.png
+Omniknight,3,6,5,5,1,1,2,8,31,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/omniknight_full.png
+Windranger,6,6,7,3,4,7,6,5,44,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/windrunner_full.png
+Tiny,9,4,5,8,7,5,8,4,50,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/tiny_full.png
+Silencer,5,6,9,5,5,4,1,1,36,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/silencer_full.png
+Tinker,8,2,1,9,6,2,7,3,38,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/tinker_full.png
+Treant Protector,1,7,7,2,2,7,1,6,33,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/treant_full.png
+Dazzle,4,7,3,3,1,2,2,7,29,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/dazzle_full.png
+Warlock,6,6,8,1,7,3,6,2,39,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/warlock_full.png
+Abaddon,2,8,5,6,3,1,2,10,37,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/abaddon_full.png
+Dragon Knight,8,3,7,3,4,7,8,5,45,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/dragon_knight_full.png
+Bounty Hunter,7,2,5,7,3,2,2,4,32,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/bounty_hunter_full.png
+Leshrac,5,7,3,4,4,5,7,2,37,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/leshrac_full.png
+Jakiro,5,8,6,3,4,5,6,2,39,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/jakiro_full.png
+Sand King,5,6,8,3,5,7,4,5,43,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/sand_king_full.png
+Spectre,9,2,8,1,7,1,2,5,35,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/spectre_full.png
+Batrider,3,4,10,2,3,6,2,1,31,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/batrider_full.png
+Shadow Demon,2,8,6,5,1,4,1,3,30,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/shadow_demon_full.png
+Bane,2,9,6,4,2,9,1,3,36,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/bane_full.png
+Nyx Assassin,4,6,7,9,4,7,2,5,44,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/nyx_assassin_full.png
+Shadow Shaman,3,7,2,4,3,9,8,2,38,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/shadow_shaman_full.png
+Lifestealer,8,2,4,4,8,2,3,7,38,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/life_stealer_full.png
+Razor,6,2,2,5,6,1,5,5,32,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/razor_full.png
+Lion,4,8,5,8,4,9,2,3,43,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/lion_full.png
+Pudge,4,3,9,10,3,5,1,4,39,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/pudge_full.png
+Undying,5,6,4,7,3,2,1,7,35,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/undying_full.png
+Night Stalker,5,3,6,9,5,4,4,6,42,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/night_stalker_full.png
+Chaos Knight,8,4,7,7,6,8,9,4,53,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/chaos_knight_full.png
+Magnus,6,3,10,8,6,10,4,4,51,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/magnataur_full.png
+Clinkz,8,1,7,4,9,1,8,4,42,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/clinkz_full.png
+Lina,5,8,5,9,4,6,4,2,43,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/lina_full.png
+Templar Assassin,7,1,6,8,6,2,5,7,42,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/templar_assassin_full.png
+Slardar,6,5,7,5,7,6,2,3,41,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/slardar_full.png
+Queen of Pain,5,4,6,10,6,1,3,6,41,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/queenofpain_full.png
+Disruptor,3,6,5,3,3,5,2,2,29,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/disruptor_full.png
+Huskar,5,5,4,8,5,2,1,6,36,Strength,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/huskar_full.png
+Brewmaster,5,4,8,6,6,3,3,8,43,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/brewmaster_full.png
+Juggernaut,6,4,3,7,5,1,6,6,38,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/juggernaut_full.png
+Doom,6,5,7,3,5,5,2,2,35,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/doom_bringer_full.png
+Phantom Assassin,9,2,2,2,8,1,3,5,32,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/phantom_assassin_full.png
+Faceless Void,10,2,8,1,7,6,3,8,45,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/faceless_void_full.png
+Tusk,5,6,9,7,5,5,2,4,43,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/tusk_full.png
+Ember Spirit,5,5,5,5,5,5,5,5,40,Agility,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/ember_spirit_full.png
+Morphling,10,2,3,2,7,2,2,10,38,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/morphling_full.png
+Spirit Breaker,5,5,7,5,4,6,1,2,35,Strength,Melee,http://cdn.dota2.com/apps/dota2/images/heroes/spirit_breaker_full.png
+Shadow Fiend,7,2,5,7,8,1,7,1,38,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/nevermore_full.png
+Skywrath Mage,5,7,3,7,5,4,1,1,33,Intelligence,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/skywrath_mage_full.png
+Troll Warlord,7,4,3,7,7,3,9,4,44,Agility,Ranged,http://cdn.dota2.com/apps/dota2/images/heroes/troll_warlord_full.png

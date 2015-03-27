@@ -1,0 +1,196 @@
+<%
+    @dotabuffLinks={"Howard"=>"88367253","Pascal"=>"83750177","Albert"=>"102344608","Isaac"=>"71313111","Nick"=>"75392401"}
+    params[:id]=@dotabuffLinks["Howard"] if params[:id].nil?
+
+  	dataURL="https://docs.google.com/spreadsheet/pub?key=0Au7GikkD5iWxdGRmcEFja2Jlc0V4VkdITDhBY2pYelE&single=true&gid=6&output=csv"
+  	@heroList=[]
+  	csv_data=open(dataURL)
+  	csv = CSV.parse(csv_data, :headers => true)
+    csv.each do |row|
+      @heroList.push(row.to_hash)
+	end
+
+  @columns=["Name", "Role", "Play Count", "Games Left","Win Rate"]
+	playCounts={}
+	winRates={}
+  dotabuffURL="http://dotabuff.com/players/"+params[:id]+"/heroes"
+	doc= Nokogiri::HTML(open(dotabuffURL))
+	links=doc.css(".hero-link")
+	links.each do |herolink|
+		name=herolink.text
+		playCounts[name]=herolink.parent.parent.children[2].children[0].text.to_i
+		winRates[name]=herolink.parent.parent.children[3].children[0].text
+		end
+
+	@heroList.each do |hero|
+		if playCounts.include?(hero["Name"])
+			hero["Play Count"]=playCounts[hero["Name"]]
+			hero["Win Rate"]=winRates[hero["Name"]]
+		else
+			hero["Play Count"]=0
+			hero["Win Rate"]="0.00%"
+		end
+		hero["Games Left"]=[10-hero["Play Count"],0].max
+  	end
+
+    #sum games left to find total
+  	games_left_map={}
+  	@heroList.map{|hero| games_left_map[hero["Name"]]=hero["Games Left"]}
+  	@games_left=games_left_map.values.reduce(:+)
+    
+  	@profile_name=doc.css(".content-header-title h1").xpath('text()').text
+%>
+
+<div class="container">
+<h3 class="text-muted">Pascal's 10 Game Challenge</h3>
+<p>
+Play 10 games with each of the following heroes.  id parameter is a Dotabuff ID.
+</p>
+<p>
+    Quick Links: <%@dotabuffLinks.each do |key, value|%>
+    <%=link_to key, :id=>value%>
+    <%end%>
+</p>
+
+<div class="row">
+<div id="piechart" class="col-xs-5"></div>
+<div id="heroes" class="col-xs-7"></div>
+</div>
+</div>
+</body>
+    <script type="text/javascript">
+    $(function() {
+  // call the tablesorter plugin
+  $("table").tablesorter({
+    theme : 'blue',
+  });
+}); 
+var heroList=<%=raw @heroList.to_json%>;
+var gamesLeftArray=heroList.map(function(d){ return {"Name":d.Name,"Games Left":d["Games Left"],"Role":d["Role"]};});
+var roleColorMap={"Carry":0,"Mid":1,"Offlane":2, "Jungle":3,"Support":4};
+
+sortByKey(gamesLeftArray, "Games Left");
+console.log(heroList);
+
+var width = 400,
+    height = 400,
+    radius = Math.min(width, height) / 2;
+
+var color = d3.scale.category10().domain(d3.range(10));
+
+var arc = d3.svg.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(radius-100);
+
+var arcOver = d3.svg.arc()
+    .outerRadius(radius)
+    .innerRadius(radius-90);
+
+var pie = d3.layout.pie()
+    .sort(null)
+    .value(function(d) { return d["Games Left"]; });
+
+var svg = d3.select("#piechart").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var centerText = svg.append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .text("<%=@profile_name%> - <%=@games_left%> to go");
+
+  var g = svg.selectAll(".arc")
+      .data(pie(gamesLeftArray))
+    .enter().append("g")
+      .attr("class", "arc");
+
+  g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color(roleColorMap[d.data["Role"]]); });
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .style("text-anchor", "middle")
+      .style("font-size", "10px")
+      .text(function(d) { if (d.data["Games Left"]>0) return d.data["Games Left"]; });
+
+svg.selectAll(".arc").on("mouseover", function(d) {
+    d3.select(this).select("path").transition()
+                   .duration(200)
+                   .attr("d", arcOver);
+centerText
+  .text( d3.select(this).datum().data.Name + " ("+d3.select(this).datum().data["Games Left"]+")");
+});
+
+svg.selectAll(".arc").on("mouseout", function(d) {
+    d3.select(this).select("path").transition()
+                   .duration(200)
+                   .attr("d", arc);
+centerText.text("<%=@profile_name%> - <%=@games_left%> to go");
+});
+
+renderHeroList("Games Left");
+
+  function renderHeroList(sortKey){
+    var columns=<%=raw @columns%>;
+    sortByKey(heroList,sortKey);
+
+    $("#heroes").empty();
+    heroTable=$("<table />");
+    heroTable.attr("id","herotable");
+    heroTable.addClass("table table-bordered");
+
+    $("#heroes").append(heroTable);
+    var tableHead=$("<thead/>");
+    var headerRow= $("<tr/>");
+    tableHead.append(headerRow);
+    heroTable.append(tableHead);
+    for (var i=0;i<columns.length;i++) {
+        var cell=$("<th/>");
+        cell.append(columns[i]);
+        headerRow.append(cell);
+    }
+    for (var i=0;i<heroList.length;i++){
+        heroRow=$("<tr/>");
+    	heroObject=heroList[i];
+    	//generate row for hero
+        for (var j=0;j<columns.length;j++) {
+            var cell=$("<td/>");
+            if (columns[j]=="Picture"){
+                var image=$("<img/>");
+                image.attr("src", heroObject.Image);
+                image.attr("height", PICTURE_HEIGHT);
+                image.attr("title", heroObject.Name);
+                image.css("float", "left");
+                cell.append(image);
+            }
+            else{
+                cell.append(heroObject[columns[j]]);
+            }
+            heroRow.append(cell);
+        }
+        //add row to table
+        heroTable.append(heroRow);
+    }
+}
+
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key];
+        var y = b[key];
+
+        if (typeof x == "string")
+        {
+            x = x.toLowerCase(); 
+            y = y.toLowerCase();
+            //sort Names ascending
+            return ((x > y) ? 1 : ((x < y) ? -1 : 0));
+        }
+
+        //sorts in descending order
+        return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+    });
+}
+</script>
