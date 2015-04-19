@@ -5,21 +5,21 @@ var async = require('async');
 var input = [];
 var start = 1405879670;
 var tries = 10000;
-var delay = 5000;
+var delay = 10000;
 var matches = 0;
 var hits = 0;
 //var proxies = [null,"http://120.237.30.178:5050","http://120.237.30.178:8888","http://124.91.135.152:8118", "http://210.101.131.227:8080", "http://119.6.144.74:81", "http://183.203.208.174:8118"];
 var proxies = [null];
 var rr = -1;
-/*
+
 //guess a list
 for (var i = 0; i < tries; i++) {
     input.push(start + i);
 }
 processList(input);
-*/
+
 //build a list
-buildInput(1);
+//buildInput(1);
 
 function buildInput(page) {
     rr = (rr + 1) % proxies.length;
@@ -86,7 +86,7 @@ function processList(input, cb) {
                         console.log("input: %s miss", input);
                     }
                 }
-                console.log("matches: %s, hits: %s, percent: %s", matches, hits, (hits / matches).toFixed(2));
+                console.log("matches: %s, hits: %s, percent: %s", matches, hits, (hits / matches));
                 cb();
             });
         }, delay);
