@@ -3,9 +3,9 @@ var request = require('request');
 var async = require('async');
 //input a list of ids or bruteforce it
 var input = [];
-var start = 1405879670;
+var start = 1414335905;
 var tries = 10000;
-var delay = 10000;
+var delay = 1000;
 var matches = 0;
 var hits = 0;
 //var proxies = [null,"http://120.237.30.178:5050","http://120.237.30.178:8888","http://124.91.135.152:8118", "http://210.101.131.227:8080", "http://119.6.144.74:81", "http://183.203.208.174:8118"];
@@ -26,7 +26,7 @@ function buildInput(page) {
     request.get({
         url: process.env.REMOTE + "/matches?page=" + page,
         headers: {
-            'User-Agent': 'request'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
         },
         proxy: proxies[rr],
         timeout: 10000
